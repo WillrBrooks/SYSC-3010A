@@ -24,4 +24,4 @@ while list(yourGuess) != secret:
 	print("Number of correct letters is ", len(correctList))
 	print("Number of unused letters is ", sum(fewestLetters) - len(correctList))
 
-print("YOU GOT THE ANSWER : ", secret)
+print("YOU GOT THE ANSWER : ", secret[0] + secret[1] + secret[2] + secret[3])
