@@ -1,23 +1,25 @@
 import urllib.request
-import http.client
+import requests
 import json
 
-key = "BKWV1FP1YQA38QHK"
-url = "https://api.thingspeak.com/update?api_key="
+key = 'BKWV1FP1YQA38QHK'
 
-#"CHANNELS/1160079/feeds.json?results=2"
+#read channel field
+url = 'https://api.thingspeak.com/channels/1160079/fields/1.json?api_key='
 
-header = "&results=2"
+#read channel feed
+#url = 'https://api.thingspeak.com/channels/1160079/feeds.json?api_key='
+
+#the number of results to be returned
+header = '&results=10'
 
 newurl = url+key+header
 
+print(newurl, "\n\n")
 
+get_data = requests.get(newurl).json()
 
-
-print(newurl)
-
-#cannot get this line to work in python3
-get_data=urllib.request.get(newurl).json()
+print(get_data, "\n\n")
 
 channel_id=get_data['channel']['id']
 
@@ -28,4 +30,4 @@ list = []
 for x in field_1:
 	list.append(x['field1'])
 
-print(list)
+print(list, "\n\n")
